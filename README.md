@@ -91,6 +91,6 @@ npm test
 
 ## 许可证与致谢
 
-本项目沿用原项目的 **GNU Affero General Public License v3.0 or later（AGPL-3.0-or-later）**，详见 [LICENSE](LICENSE)。原项目当前使用 AGPL，并非 MIT；本 fork 保留原有许可证和版权声明。
+ **GNU Affero General Public License v3.0 or later（AGPL-3.0-or-later）**
 
 感谢 [windingwind/zotero-pdf-translate](https://github.com/windingwind/zotero-pdf-translate) 及所有上游贡献者提供的翻译功能和插件基础。
