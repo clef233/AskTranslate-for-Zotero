@@ -1,10 +1,47 @@
-build
-logs
-node_modules
+# Dependencies (npm is used by this repository)
+node_modules/
 pnpm-lock.yaml
 yarn.lock
-tsconfig.tsbuildinfo
-zotero-cmd.json
-.DS_Store
+
+# Build output and development caches
+/build/
+/dist/
+.scaffold/
+*.tsbuildinfo
+*.xpi
+/coverage/
+.nyc_output/
+.cache/
+
+# Local configuration and credentials
 .env
-.scaffold
+.env.*
+!.env.example
+!.env.*.example
+zotero-cmd.json
+*.pem
+*.key
+
+# Logs and temporary files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Local tools, profiles and editor settings
+/.tools/
+/.profiles/
+.idea/
+.vscode/*.local.json
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
