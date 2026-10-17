@@ -1,7 +1,7 @@
 itemPaneSection-header =
-    .label = Translate
+    .label = AskTranslate
 itemPaneSection-sidenav =
-    .tooltiptext = Translate
+    .tooltiptext = AskTranslate
 itemPaneSection-fullHeight =
     .tooltiptext = Full height
 itemPaneSection-openStandalone =

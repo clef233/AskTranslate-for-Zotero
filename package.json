@@ -1,19 +1,18 @@
 {
-  "name": "zotero-pdf-translate",
-  "version": "2.4.7",
-  "description": "Translate for Zotero fork with AI follow-up Q&A on selected passages, streaming answers and Zotero note export.",
+  "name": "asktranslate",
+  "version": "0.1.0",
+  "description": "AskTranslate for Zotero: translate selected passages and ask AI follow-up questions, with streaming answers and note export.",
   "config": {
-    "addonName": "Translate for Zotero",
-    "addonID": "zoteropdftranslate@euclpts.com",
-    "addonRef": "zoteropdftranslate",
-    "prefsPrefix": "extensions.zotero.ZoteroPDFTranslate",
-    "addonInstance": "PDFTranslate"
+    "addonName": "AskTranslate for Zotero",
+    "addonID": "asktranslate@clef233.github.io",
+    "addonRef": "asktranslate",
+    "prefsPrefix": "extensions.zotero.AskTranslate",
+    "addonInstance": "AskTranslate"
   },
   "main": "src/index.ts",
   "scripts": {
     "start": "zotero-plugin serve",
     "build": "tsc --noEmit && zotero-plugin build",
-    "release": "zotero-plugin release",
     "lint": "prettier --write . && eslint . --fix",
     "test": "zotero-plugin test",
     "update-deps": "npm update --save"
@@ -22,9 +21,9 @@
     "type": "git",
     "url": "git+https://github.com/clef233/zotero-pdf-translate.git"
   },
-  "author": "windingwind",
+  "author": "clef233 (fork maintainer); windingwind and contributors (upstream)",
   "contributors": [
-    "clef233"
+    "windingwind and Zotero PDF Translate contributors"
   ],
   "license": "AGPL-3.0-or-later",
   "bugs": {

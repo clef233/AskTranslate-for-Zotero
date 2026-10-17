@@ -10,7 +10,7 @@ let paneKey = "";
 
 export function registerReaderTabPanel() {
   const key = Zotero.ItemPaneManager.registerSection({
-    paneID: "translate",
+    paneID: "asktranslate",
     pluginID: config.addonID,
     header: {
       l10nID: getLocaleID("itemPaneSection-header"),
@@ -22,13 +22,11 @@ export function registerReaderTabPanel() {
       // @ts-ignore
       orderable: false,
     },
-    bodyXHTML: "<translator-plugin-panel />",
+    bodyXHTML: "<asktranslate-panel />",
     onInit,
     onDestroy,
     onRender: ({ body, item }) => {
-      const panel = body.querySelector(
-        "translator-plugin-panel",
-      ) as TranslatorPanel;
+      const panel = body.querySelector("asktranslate-panel") as TranslatorPanel;
       panel.item = item;
       panel.render();
       onUpdateHeight({ body });
@@ -260,7 +258,7 @@ function onItemChange({
 function updateExtraPanel(container: HTMLElement | Document) {
   const lastTask = getLastTranslateTask();
   const panel = container.querySelector(
-    "translator-plugin-panel",
+    "asktranslate-panel",
   ) as TranslatorPanel;
   if (panel) {
     panel.item = Zotero.Items.get(lastTask?.itemId || -1);

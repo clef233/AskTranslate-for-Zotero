@@ -161,7 +161,7 @@ readerpopup-translate-label=翻译
 readerpopup-addToNote-label=添加翻译至笔记
 readerpopup-ask-label=追问
 
-pref-title=翻译
+pref-title=AskTranslate
 
 field-titleTranslation=标题翻译
 field-abstractTranslation=摘要翻译

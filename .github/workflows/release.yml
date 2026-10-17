@@ -2,52 +2,35 @@ name: Release
 
 on:
   push:
-    tags:
-      - v**
+    tags: ["asktranslate-v*"]
 
 permissions:
   contents: write
-  issues: write
-  pull-requests: write
+
+concurrency:
+  group: asktranslate-release
+  cancel-in-progress: false
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GitHub_TOKEN }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-
-      - name: Install deps
-        run: npm install -f
-
-      - name: Build
+          node-version: "22"
+          cache: npm
+      - name: Check version tag
         run: |
-          npm run build
-
-      - name: Release to GitHub
-        run: |
-          npm run release
-          # cp build/update.json update.json
-          # cp build/update-beta.json update-beta.json
-          # git add update.json
-          # git add update-beta.json
-          # git commit -m 'chore(publish): synchronizing `update.json`'
-          # git push
-          sleep 1s
-
-      - name: Notify release
-        uses: apexskier/github-release-commenter@v1
-        continue-on-error: true
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          comment-template: |
-            :rocket: _This ticket has been resolved in {release_tag}. See {release_link} for release notes._
+          version=$(node -p "require('./package.json').version")
+          test "$GITHUB_REF_NAME" = "asktranslate-v$version"
+      - run: npm ci
+      - run: npm run build
+      - name: Verify installable package and update manifest
+        run: python3 scripts/verify-release.py
+      - name: Publish version and update manifests
+        run: node scripts/publish-release.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}

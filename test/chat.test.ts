@@ -384,13 +384,13 @@ describe("conversation identity", function () {
 
 describe("follow-up Q&A in Zotero", function () {
   it("paints itself as soon as it is connected", function () {
-    const plugin = (Zotero as any).PDFTranslate;
+    const plugin = (Zotero as any).AskTranslate;
     if (!plugin) {
       return;
     }
     const win = Zotero.getMainWindow() as any;
     const fragment = win.MozXULElement.parseXULToFragment(
-      '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><translator-chat-panel /></html:div>',
+      '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><asktranslate-chat-panel /></html:div>',
     );
     const container = win.document.importNode(fragment, true)
       .firstElementChild as HTMLElement;
@@ -411,7 +411,7 @@ describe("follow-up Q&A in Zotero", function () {
   it("is wired up when the plugin is running in Zotero", function () {
     // This suite also runs in a plain Node harness, where the plugin is not
     // loaded; keep the assertions meaningful but not failing there.
-    const plugin = (Zotero as any).PDFTranslate;
+    const plugin = (Zotero as any).AskTranslate;
     if (!plugin) {
       return;
     }
@@ -425,7 +425,7 @@ describe("follow-up Q&A in Zotero", function () {
   });
 
   it("registers the AI Q&A section in the item pane", function () {
-    const plugin = (Zotero as any).PDFTranslate;
+    const plugin = (Zotero as any).AskTranslate;
     if (!plugin) {
       return;
     }
@@ -434,7 +434,7 @@ describe("follow-up Q&A in Zotero", function () {
   });
 
   it("queues the selection as the context of the next question", function () {
-    const plugin = (Zotero as any).PDFTranslate;
+    const plugin = (Zotero as any).AskTranslate;
     if (!plugin) {
       return;
     }
@@ -454,7 +454,7 @@ describe("follow-up Q&A in Zotero", function () {
   });
 
   it("renders the section body", function () {
-    const plugin = (Zotero as any).PDFTranslate;
+    const plugin = (Zotero as any).AskTranslate;
     if (!plugin) {
       return;
     }
@@ -468,7 +468,7 @@ describe("follow-up Q&A in Zotero", function () {
       // previous test would make the context row visible.
       plugin.data.chat.store.clear();
       const fragment = win.MozXULElement.parseXULToFragment(
-        '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><translator-chat-panel /></html:div>',
+        '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><asktranslate-chat-panel /></html:div>',
       );
       const container = win.document.importNode(fragment, true)
         .firstElementChild as HTMLElement;
@@ -488,11 +488,8 @@ describe("follow-up Q&A in Zotero", function () {
           "the empty state is shown",
         );
         assert.strictEqual(
-          (
-            panel.querySelector(
-              "#zoteropdftranslate-chat-pending",
-            ) as HTMLElement
-          )?.hidden,
+          (panel.querySelector("#asktranslate-chat-pending") as HTMLElement)
+            ?.hidden,
           true,
           "the pending context row is hidden without a selection",
         );
@@ -510,22 +507,19 @@ describe("follow-up Q&A in Zotero", function () {
         );
         // The context is shown as it is, so the user sees what is sent
         assert.include(
-          panel.querySelector("#zoteropdftranslate-chat-quote").textContent,
+          panel.querySelector("#asktranslate-chat-quote").textContent,
           "The writing is on the wall.",
           "the quoted selection is shown",
         );
         // The labels come from the addon locale, not from the raw l10n ids
         assert.notInclude(
           panel.querySelector(".chat-pending").textContent,
-          "zoteropdftranslate-",
+          "asktranslate-",
           "the context labels are translated",
         );
         assert.strictEqual(
-          (
-            panel.querySelector(
-              "#zoteropdftranslate-chat-pending",
-            ) as HTMLElement
-          )?.hidden,
+          (panel.querySelector("#asktranslate-chat-pending") as HTMLElement)
+            ?.hidden,
           false,
           "the pending context row is shown after a selection",
         );
@@ -544,13 +538,13 @@ describe("follow-up Q&A in Zotero", function () {
   });
 
   it("releases its store subscription when the section is removed", function () {
-    const plugin = (Zotero as any).PDFTranslate;
+    const plugin = (Zotero as any).AskTranslate;
     if (!plugin) {
       return;
     }
     const win = Zotero.getMainWindow() as any;
     const fragment = win.MozXULElement.parseXULToFragment(
-      '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><translator-chat-panel /></html:div>',
+      '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><asktranslate-chat-panel /></html:div>',
     );
     const container = win.document.importNode(fragment, true)
       .firstElementChild as HTMLElement;
@@ -584,7 +578,7 @@ describe("follow-up Q&A in Zotero", function () {
  * the answer can be stopped and turned into a note.
  */
 describe("follow-up Q&A end to end", function () {
-  const plugin = () => (Zotero as any).PDFTranslate;
+  const plugin = () => (Zotero as any).AskTranslate;
 
   function mountPanel(): { panel: any; container: HTMLElement } | undefined {
     const win = Zotero.getMainWindow() as any;
@@ -592,7 +586,7 @@ describe("follow-up Q&A end to end", function () {
       return undefined;
     }
     const fragment = win.MozXULElement.parseXULToFragment(
-      '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><translator-chat-panel /></html:div>',
+      '<html:div xmlns:html="http://www.w3.org/1999/xhtml"><asktranslate-chat-panel /></html:div>',
     );
     const container = win.document.importNode(fragment, true)
       .firstElementChild as HTMLElement;

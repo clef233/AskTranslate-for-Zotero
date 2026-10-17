@@ -1,7 +1,7 @@
 itemPaneSection-header =
-    .label = 翻译
+    .label = AskTranslate
 itemPaneSection-sidenav =
-    .tooltiptext = 翻译
+    .tooltiptext = AskTranslate
 itemPaneSection-fullHeight =
     .tooltiptext = 自适应高度
 itemPaneSection-openStandalone =

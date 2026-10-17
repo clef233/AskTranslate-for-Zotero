@@ -7,7 +7,7 @@ import { getLastTranslateTask } from "../utils/task";
 import { renderMarkdownToHTML } from "../utils/markdown";
 import type { ChatPanel } from "../elements/chat";
 
-export const CHAT_PANE_ID = "translate-chat";
+export const CHAT_PANE_ID = "asktranslate-chat";
 
 /**
  * Body of the chat section that is currently rendered, if any.
@@ -39,7 +39,7 @@ export function registerChatPane() {
       // @ts-ignore 'orderable' is supported but missing in the typings
       orderable: false,
     },
-    bodyXHTML: "<translator-chat-panel />",
+    bodyXHTML: "<asktranslate-chat-panel />",
     onInit,
     onRender: ({ body, item }) => {
       renderChatPane(body, item?.id);
@@ -68,7 +68,7 @@ function onInit({ body }: { body: HTMLElement }) {
 }
 
 function getPanel(body: HTMLElement) {
-  return body.querySelector("translator-chat-panel") as ChatPanel | null;
+  return body.querySelector("asktranslate-chat-panel") as ChatPanel | null;
 }
 
 /**

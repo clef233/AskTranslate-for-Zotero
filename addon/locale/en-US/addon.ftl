@@ -161,7 +161,7 @@ readerpopup-translate-label=Translate
 readerpopup-addToNote-label=Add Translation to Note
 readerpopup-ask-label=Ask Follow-up
 
-pref-title=Translate
+pref-title=AskTranslate
 
 field-titleTranslation=Title Translation
 field-abstractTranslation=Abstract Translation

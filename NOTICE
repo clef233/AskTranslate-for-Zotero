@@ -1,0 +1,22 @@
+AskTranslate for Zotero
+Version 0.1.0, released 2026-10-17
+
+Fork maintainer and AI follow-up Q&A modifications: clef233.
+AI follow-up changes began on 2026-09-11; independent identity and release
+configuration were added on 2026-10-17.
+
+Based on Translate for Zotero / Zotero PDF Translate by windingwind and
+the upstream contributors:
+https://github.com/windingwind/zotero-pdf-translate
+
+This is an independently maintained derivative, not an official upstream release.
+The upstream work retains its authorship and copyright. AskTranslate is
+distributed under AGPL-3.0-or-later; see LICENSE for the full license and
+disclaimer of warranty. Third-party notices are in THIRD_PARTY_NOTICES.txt.
+
+Source code and build instructions for this version:
+https://github.com/clef233/zotero-pdf-translate/tree/asktranslate-v0.1.0
+
+Use AskTranslate with the original Translate for Zotero plugin disabled.
+AskTranslate uses its own settings; configure translation and AI services
+after installation. Answers saved as Zotero notes remain in the library.
